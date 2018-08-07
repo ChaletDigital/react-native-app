@@ -14,6 +14,8 @@ FYI: Expo setup was done using this tutorial: https://matwrites.com/get-started-
 
 1 - On iTerm, go to .../react-native-app directory and run `exp start`.
 
+    You may need to run `npm install` to download all node dependencies.
+
 2 - To run the app on iOS devices: run `exp send -s <your-phone-number-or-email>` in this project directory in another terminal window to send the URL to your device.
 
 3 - Expo app will open, you'll see `Downloading Javascrip bundle %%` at the bottom of the screen, and then BOOM!!
