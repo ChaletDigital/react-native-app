@@ -29,6 +29,7 @@ export default class App extends React.Component {
 
    setStateAsync(state) {
     return new Promise((resolve) => {
+        
       this.setState(state, resolve)
     });
   }
@@ -46,12 +47,12 @@ export default class App extends React.Component {
 
   updateWorklightState(newState) {
     const action = newState ? 'ON' : 'OFF'
-    var url = 'http://geninhofloripa.ddns.net:82/PIN' + this.state.worklightPin.id + '=' + action;
+    const url = 'http://geninhofloripa.ddns.net:82/PIN' + this.state.worklightPin.id + '=' + action;
 
    fetch(url)
     .then(response => console.log('Light is ' + action))
     .done();
-}
+    }
 
   render() {
     return (
