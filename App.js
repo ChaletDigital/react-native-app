@@ -29,7 +29,6 @@ export default class App extends React.Component {
 
    setStateAsync(state) {
     return new Promise((resolve) => {
-        
       this.setState(state, resolve)
     });
   }
