@@ -16,9 +16,6 @@ const styles = StyleSheet.create({
     },
 });
 
-
-
-
 const Pin = props => (
     <View style={styles.pinContainer}>
         <Switch value={props.pin.checked} onValueChange={props.onToggle} />
