@@ -1,10 +1,7 @@
 import React from 'react';
 import { View,Text,StyleSheet,Switch} from 'react-native';
 import { Constants } from 'expo';
-
-
-
-
+const ardBoard =  'http://geninhofloripa.ddns.net:82/PIN';
 const styles = StyleSheet.create({
     pinContainer: {
         flexDirection: 'row',
@@ -23,9 +20,6 @@ const Pin = props => (
     </View>
 );
 
-
-
-
 export default class App extends React.Component {
 
     constructor() {
@@ -36,16 +30,11 @@ export default class App extends React.Component {
         };
     }
 
-
-
     setStateAsync(state) {
         return new Promise((resolve) => {
             this.setState(state, resolve)
         });
     }
-
-
-
 
     toggleDesklightState() {
         this.updateDesklightState(!this.state.desklightPin.checked);
@@ -58,18 +47,14 @@ export default class App extends React.Component {
         });
     }
 
-
-
     updateDesklightState(newState) {
         const action = newState ? 'ON' : 'OFF'
-        const url = 'http://geninhofloripa.ddns.net:82/PIN' + this.state.desklightPin.id + '=' + action;
+        const url = ardBoard + this.state.desklightPin.id + '=' + action;
 
         fetch(url)
         .then(response => console.log('DeskLight is ' + action))
         .done();
     }
-
-
 
     toggleWorklightState() {
         this.updateWorklightState(!this.state.worklightPin.checked);
@@ -82,38 +67,28 @@ export default class App extends React.Component {
       });
     }
 
-
     updateWorklightState(newState) {
         const action = newState ? 'ON' : 'OFF'
-        const url = 'http://geninhofloripa.ddns.net:82/PIN' + this.state.worklightPin.id + '=' + action;
+        const url = ardBoard + this.state.worklightPin.id + '=' + action;
 
         fetch(url)
         .then(response => console.log('WorkLight is ' + action))
         .done();
     }
 
-
-
-
     render() {
         return (
             <View style={styles.appContainer}>
-
                 <Text>Chalet Digital – Beta MVP – React-Native App</Text>
-
                 <Pin
                     onToggle={() => this.toggleWorklightState()}
                     pin={this.state.worklightPin}
                 />
-
                 <Pin
                     onToggle={() => this.toggleDesklightState()}
                     pin={this.state.desklightPin}
                 />
-
             </View>
         );
     }
-
-
 }
