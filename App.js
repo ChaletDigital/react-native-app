@@ -36,21 +36,26 @@ export default class App extends React.Component {
     }
 
     togglePinState(key) {
+      return () => {
         this.setState((prevState) => {
             //update internal state
-            pins: {
-                ...prevState.pins,
-                [key] : {
-                    id: prevState.pins[key].id,
-                    text: prevState.pins[key].text,
-                    checked: !prevState.pins[key].checked
-                }
+            return {
+              pins: {
+                  ...prevState.pins,
+                  [key] : {
+                      id: prevState.pins[key].id,
+                      text: prevState.pins[key].text,
+                      checked: !prevState.pins[key].checked
+                  }
+              }
             }
         }, (state) => {
             //call Arduino wit new state
             this.updatePinOnArduino(state.pins[key]);
         })
     }
+  }
+
 
     updatePinOnArduino(pin) {
         const action = pin.checked ? 'ON' : 'OFF';
