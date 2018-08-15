@@ -51,7 +51,7 @@ export default class App extends React.Component {
             }
         }, (state) => {
             //call Arduino wit new state
-            this.updatePinOnArduino(state.pins[key]);
+            this.updatePinOnArduino(this.state.pins[key]);
         })
     }
   }
